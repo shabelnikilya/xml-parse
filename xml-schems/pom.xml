@@ -35,32 +35,35 @@
             <artifactId>jaxb-impl</artifactId>
             <version>3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.3</version>
+                <groupId>com.evolvedbinary.maven.jvnet</groupId>
+                <artifactId>jaxb30-maven-plugin</artifactId>
+                <version>0.15.0</version>
                 <executions>
                     <execution>
-                        <id>xjc</id>
                         <goals>
-                            <goal>xjc</goal>
+                            <goal>generate</goal>
                         </goals>
+                        <configuration>
+                            <schemaDirectory>${project.basedir}/src/main/resources/xml-model</schemaDirectory>
+                            <schemaIncludes>
+                                <schemaInclude>user.xsd</schemaInclude>
+                            </schemaIncludes>
+                            <generateDirectory>target/generated-sources/xjc</generateDirectory>
+                            <bindingDirectory>${project.basedir}/src/main/resources/xsd</bindingDirectory>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <xjbSources>
-                        <xjbSource>src/main/resources/global.xjb</xjbSource>
-                    </xjbSources>
-                    <sources>
-                        <source>src/main/resources/user.xsd</source>
-                    </sources>
-                    <outputDirectory>${basedir}/src/main/java</outputDirectory>
-                    <clearOutputDir>false</clearOutputDir>
-                </configuration>
             </plugin>
         </plugins>
     </build>
