@@ -4,11 +4,11 @@
         xmlns:userns="/jaxb/gen"
         elementFormDefault="qualified">
 
-    <complexType name="UserRequest">
+    <complexType name="User">
         <sequence>
-            <element name="id" type="int" />
-            <element name="name" type="string" />
-            <element name="secondName" type="string" />
+            <element name="ИД" type="int" />
+            <element name="Имя" type="string" />
+            <element name="Фамилия" type="string" />
         </sequence>
     </complexType>
 </schema>
